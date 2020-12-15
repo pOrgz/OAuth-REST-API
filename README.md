@@ -1,7 +1,10 @@
 <div align = "center">
 
 <img src = "./assets/logo.png" height = "128" width = "128" />
-<h1 align = "center">OAuth REST API</h1>
+<h1 align = "center">OAuth REST API</h1><br>
+
+<a href="https://github.com/pOrgz/OAuth-REST-API/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/pOrgz/OAuth-REST-API?style=plastic"></a>
+<a href="https://github.com/pOrgz/OAuth-REST-API/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/pOrgz/OAuth-REST-API?style=plastic"></a>
 
 </div>
 
