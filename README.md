@@ -10,3 +10,29 @@
 ## Setup
 
 <p align = "justify"><b>pOrgz</b> application is built using <i>flask</i> which is a <q>micro web framework</q>. By <b>default</b>, the application runs at <code>PORT = 5000</code>, and for this application specific task it is running on <code>localhost</code>. To change the default desitnation, you will need to set the <code>PORT</code> and <code>HOST</code>.</p>
+
+## API Return JSON
+
+<p align = "justify">All type of Authentication API will follow a general structure, which is summarized as below. For other API (if required), like getting list of all users, session information, they will be build and modified as required.</p>
+
+```json
+{
+    "status" : {
+        "type"    : "<str>  JSON Message Type : Generally a String Representing the APIs [`login` or `signup`]",
+        "message" : "<str>  Message Body",
+        "code"    : 200,
+        "error"   : "<bool> `True` : Compilation or Programming Error Message, if Received; else `False`"
+    },
+    "data" : {
+        "status" : "<str> Main Message - which is either `success` or `failed`, representing login/signup",
+        "user"   : {
+            "user-id"  : "<str> User ID Associated (a new ID on registration or an existing ID on login)",
+            "username" : "<str> Username, as provided during Login",
+            "email"    : "<str> Email Address - from DB (optional)",
+            "fullname" : "<str> Full Name of the Login Person (as per Requirement)"
+        },
+        "remarks" : "<str> Reason if `status` = `failed` else `None`"
+    },
+    "time" : "<str> Time on which Login/Signup is Requested"
+}
+```
