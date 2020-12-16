@@ -20,6 +20,8 @@ api = Api(app)
 ### --- List of all Resources --- ###
 from app.main.controller import *
 
+api.add_resource(OAuthController, "/signup", endpoint = "default")
+
 if __name__ == "__main__":
     app.run(
         port = os.getenv('port', 5000), # run the application on default 5000 Port

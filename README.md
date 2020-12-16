@@ -34,7 +34,8 @@
             "email"    : "<str> Email Address - from DB (optional)",
             "fullname" : "<str> Full Name of the Login Person (as per Requirement)"
         },
-        "remarks" : "<str> Reason if `status` = `failed` else `None`"
+        "remarks"  : "<str> Reason if `status` = `failed` else `None`",
+        "errorMsg" : "<str> Error Traceback as Thrown by Python-Compiler"
     },
     "time" : "<str> Time on which Login/Signup is Requested"
 }
