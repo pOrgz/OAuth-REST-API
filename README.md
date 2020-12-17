@@ -40,3 +40,5 @@
     "time" : "<str> Time on which Login/Signup is Requested"
 }
 ```
+
+For `login` authentication, there is no `data` block in the return JSON.

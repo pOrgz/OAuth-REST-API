@@ -71,3 +71,58 @@ class OAuthRepository:
                 "remarks"  : "username must be unique",
                 "errorMsg" : str(err)
             }
+
+    def __fetch_password_hash__(self, username : str) -> str:
+        """Fetch Password Hash from Database"""
+
+        try:
+            data = UsersMaster.query.filter_by(uName = username).all()
+        except Exception as err:
+            return {
+                "status" : "failed",
+                "user"   : {
+                    "username" : f"{username}",
+                    "password" : "None"
+                },
+                "remarks"  : "unable to fetch data",
+                "errorMsg" : str(err)
+            }
+
+        SCHEMA = lambda row : {
+            "username" : row.uName,
+            "password" : row.pHash
+        }
+
+        data = [SCHEMA(row) for row in data]
+        if len(data) == 0:
+            return {
+                "status" : "failed",
+                "user"   : {
+                    "username" : f"{username}",
+                    "password" : "None"
+                },
+                "remarks"  : "no such username registered",
+                "errorMsg" : "None"
+            }
+        elif len(data) > 1:
+            return {
+                "status" : "failed",
+                "user"   : {
+                    "username" : f"{username}",
+                    "password" : "None"
+                },
+                "remarks"  : "got more than one same username, check database",
+                "errorMsg" : "DB IntegrityError : Possibly, Wrong DB Schema Defination"
+            }
+
+        # pass succes, on validation checks
+        data = data[0]
+        return {
+                "status" : "success",
+                "user"   : {
+                    "username" : data["username"],
+                    "password" : data["password"]
+                },
+                "remarks"  : "None",
+                "errorMsg" : "None"
+            }

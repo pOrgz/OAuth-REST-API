@@ -54,3 +54,34 @@ class OAuthController(Resource):
                 "data" : data_message,
                 "time" : str(time.ctime())
             }, 200
+        else: # for endpoint = 'login'
+            curTime  = str(time.ctime())
+            username = request.args.get("username") or args.username
+            password = request.args.get("password") or args.password
+
+            data_message = self.oauthRepository.__fetch_password_hash__(username)
+
+            if data_message["status"] == "success":
+                __password_hash__ = data_message["user"]["password"]
+                authentication    = validate(password, __password_hash__)
+
+                if authentication: # TODO update `logins_master` table with login information
+                    _message_body  = "Login Succesful"
+                    _error_message = "None"
+                else:
+                    _message_body  = "Login Failed"
+                    _error_message = "Wrong Username/Password"
+
+            else:
+                _message_body  = "Login Failed"
+                _error_message = "Wrong Username/Password"
+
+            return {
+                "status" : {
+                    "type"    : "login",
+                    "message" : _message_body,
+                    "code"    : 200,
+                    "error"   : _error_message
+                },
+                "time" : curTime
+            }, 200
