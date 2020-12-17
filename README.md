@@ -4,6 +4,7 @@
 <h1 align = "center">OAuth REST API</h1><br>
 
 <a href="https://github.com/pOrgz/OAuth-REST-API/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/pOrgz/OAuth-REST-API?style=plastic"></a>
+<a href="https://github.com/pOrgz/OAuth-REST-API/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pOrgz/OAuth-REST-API?style=plastic"></a>
 <a href="https://github.com/pOrgz/OAuth-REST-API/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/pOrgz/OAuth-REST-API?style=plastic"></a>
 
 </div>
