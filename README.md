@@ -17,7 +17,7 @@
 
 ## API Return JSON
 
-<p align = "justify">All type of Authentication API will follow a general structure, which is summarized as below. For other API (if required), like getting list of all users, session information, they will be build and modified as required.</p>
+<p align = "justify">All type of Authentication API will follow a general structure, which is summarized as below. For <code>login</code> authentication, there is no <code>data</code> block in the return JSON.</p>
 
 ```json
 {
@@ -41,5 +41,3 @@
     "time" : "<str> Time on which Login/Signup is Requested"
 }
 ```
-
-For `login` authentication, there is no `data` block in the return JSON.
