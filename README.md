@@ -10,7 +10,7 @@
 
 </div>
 
-<p align = "justify"><b>OAuth REST API</b> is a <i>high-level</i> REST API design for user authentication and security for <a href = "https://github.com/pOrgz/pOrgz-py"><b>pOrgz</b></a>. Built using <i>flask</i> which is a <q>micro web framework</q>, and can be compiled with <b>python 3.6+</b> (as it uses the <i>f-string</i> conventions).</p>
+<p align = "justify"><b>OAuth REST API</b> is a <i>high-level</i> interface designed for user authentication and security for <a href = "https://github.com/pOrgz/pOrgz-py"><b>pOrgz</b></a>. Built using <i>flask</i>, which is a <q>micro web framework</q>, and can be compiled with <b>python 3.6+</b> (as it uses the <i>f-string</i> conventions).</p>
 
 **NOTE:** API Template is available in [GitHub, REST-API Template](https://github.com/dPramanik7/rest-api-template) Design, however certain modifications were made as required.
 
@@ -26,7 +26,7 @@
 | **database_host** | Host address where the database resides. | localhost |
 | **username** | Username for connecting to database. | `None` |
 | **password** | Password for connecting to database. | `None` |
-| **DATABASE_URL** | Full database URI (like one of MySQL, SQLite, PSQL, etc.).<br>Syntax for different databse is as follows:<br>- **MySQL** : `mysql+pymysql://username:password@database_host`.<br>- **SQLite** : *todo*. | *MySQL URI* |
+| **DATABASE_URL** | Full database URI (like one of MySQL, SQLite, PSQL, etc.).<br>Syntax for different databse is as follows:<br>- **MySQL** : `mysql+pymysql://username:password@database_host`.<br>- **SQLite** : *todo*. | *MySQL* |
 | dev_db | Development Database Name | pOrgz |
 | test_db | Production Database Name | test |
 
