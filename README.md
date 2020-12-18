@@ -5,15 +5,36 @@
 
 <a href="https://github.com/pOrgz/OAuth-REST-API/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/pOrgz/OAuth-REST-API?style=plastic"></a>
 <a href="https://github.com/pOrgz/OAuth-REST-API/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/pOrgz/OAuth-REST-API?style=plastic"></a>
+<a href="https://github.com/pOrgz/OAuth-REST-API/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/pOrgz/OAuth-REST-API?style=plastic"></a>
 <a href="https://github.com/pOrgz/OAuth-REST-API/blob/master/LICENSE"><img alt="GitHub license" src="https://img.shields.io/github/license/pOrgz/OAuth-REST-API?style=plastic"></a>
 
 </div>
 
-<p align = "justify"><b>REST API</b> built on <i>Python 3.6</i> for managing user informations and sessions for the <b>pOrgz</b> main applictation. This REST-API design exposes login session information via an internal (localhost) session on a desired PORT. <b>TODO Documentations -- gist</b>. This API is taken from <i>template</i> (available at <a href="https://github.com/dPramanik7/rest-api-template">GitHub</a>).</p>
+<p align = "justify"><b>OAuth REST API</b> is a <i>high-level</i> REST API design for user authentication and security for <a href = "https://github.com/pOrgz/pOrgz-py"><b>pOrgz</b></a>. Built using <i>flask</i> which is a <q>micro web framework</q>, and can be compiled with <b>python 3.6+</b> (as it uses the <i>f-string</i> conventions).</p>
+
+**NOTE:** API Template is available in [GitHub, REST-API Template](https://github.com/dPramanik7/rest-api-template) Design, however certain modifications were made as required.
 
 ## Setup
 
-<p align = "justify"><b>pOrgz</b> application is built using <i>flask</i> which is a <q>micro web framework</q>. By <b>default</b>, the application runs at <code>PORT = 5000</code>, and for this application specific task it is running on <code>localhost</code>. To change the default desitnation, you will need to set the <code>PORT</code> and <code>HOST</code>.</p>
+<p align = "justify">A list of minimal required package for running this application is available, and can be installed using <code>pip install -r requirements.txt</code>. By default, this application runs on <code>localhost:5000</code>, however everything is changeble/configurable using environment variables, which are defined as follows:</p>
+
+| VARIABLE NAME | Defination/Remarks | Settings |
+| :---: | --- | :---: |
+| **port** | PORT on which flask application will run. | 5000 |
+| **host** | HOST name/address for flask application. | localhost |
+| PROJECT_ENV_NAME | Name of the Project Environment, signifies the type of application hosting.<br>It can be one of the following:<br>- `dev` : signifies development setup, i.e. the *flask* application will be running on *debugging* mode,<br>- `test` : environment for testing, and<br>- `prod` : production environment setup. | dev |
+| **database_host** | Host address where the database resides. | localhost |
+| **username** | Username for connecting to database. | `None` |
+| **password** | Password for connecting to database. | `None` |
+| **DATABASE_URL** | Full database URI (like one of MySQL, SQLite, PSQL, etc.).<br>Syntax for different databse is as follows:<br>- **MySQL** : `mysql+pymysql://username:password@database_host`.<br>- **SQLite** : *todo*. | *MySQL URI* |
+| dev_db | Development Database Name | pOrgz |
+| test_db | Production Database Name | test |
+
+### Password Security and Encryption
+
+<p align = "justify">As decided earlier, <b>pOrgz</b> is currently set to work in localhost environment, safegurding user informations locally. Though local, there are certain security measures developed, one of which is encrypting the password, and using salting to save the password in the database - making it secure even if you are using a simple database like SQLite.</p>
+
+<p align = "justify">The simple salting method used here is of style : <code>forward_salt + actual_password + backward_salt</code>, where <code>forward_salt</code> and <code>backward_salt</code> depends on the user and can be set to PATH/Environment Variables as desired - if not configured, it only saves the password using <code>SHA-256</code> encryption.</p>
 
 ## API Return JSON
 
