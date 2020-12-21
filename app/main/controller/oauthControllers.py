@@ -4,6 +4,7 @@ import time
 from flask import request
 from flask_restful import Resource, reqparse
 
+from ... import *
 from ..models import *
 from ..repository import *
 from ..utils import validate
@@ -31,16 +32,19 @@ class OAuthController(Resource):
 
     def post(self):
         """POST Request for User Authentication (login and signup)"""
-
+        
         args = self.req_parser.parse_args()
 
         if request.endpoint == "default": # this is sign-up endpoint
+            infoLogger.info(f"{args.username} signup requested.")
+
             data_message = self.oauthRepository._POST_(args)
 
             if data_message["status"] == "success":
                 _message_body  = "New User Created Sucessfully"
                 _error_message = "False"
             else:
+                warnLogger.warning(f"User : {args.username} - Not Created.")
                 _message_body  = "Unable to Create a New User"
                 _error_message = "True"
 
@@ -55,6 +59,8 @@ class OAuthController(Resource):
                 "time" : str(time.ctime())
             }, 200
         else: # for endpoint = 'login'
+            infoLogger.info(f"Login Requested for {args.username}.")
+
             curTime  = str(time.ctime())
             username = request.args.get("username") or args.username
             password = request.args.get("password") or args.password

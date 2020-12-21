@@ -4,6 +4,7 @@ import time
 from uuid import uuid1, uuid4
 from sqlalchemy.exc import IntegrityError
 
+from ... import *
 from .. import db
 from ..utils import *
 from ..models import *
@@ -60,6 +61,7 @@ class OAuthRepository:
                 "errorMsg" : "None"
             }
         except IntegrityError as err:
+            errorLogger.exception("Failed to Create User or Update Database")
             return {
                 "status" : "failed",
                 "user"   : {
